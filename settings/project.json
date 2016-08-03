@@ -1,0 +1,17 @@
+{
+  "collision-matrix": [
+    [
+      true,
+      false
+    ],
+    [
+      false,
+      true
+    ]
+  ],
+  "group-list": [
+    "default",
+    "body"
+  ],
+  "start-scene": ""
+}
