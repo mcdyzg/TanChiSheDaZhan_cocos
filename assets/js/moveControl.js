@@ -41,6 +41,10 @@ cc.Class({
         othersnakecontainer:{
             default:null,
             type:cc.Node
+        },
+        testsnake:{
+            default:null,
+            type:cc.Node
         }
     },
 
@@ -56,9 +60,9 @@ cc.Class({
         t.otherplayer = [];
         for(var i = 0;i<__G__.playerdata.length;i++){
             if(i==0) {
-                t.background.position = __G__.playerdata[i].position;
+                // t.background.position = __G__.playerdata[i].position;
                 t.player.getComponent('playersnake').speed = __G__.playerdata[i].speed;
-                t.player.getComponent('playersnake').direction=__G__.playerdata[i].direction;
+                t.player.getComponent('playersnake').direction=__G__.playerdata[i].direction; 
                 t.player.group = __G__.playerdata[i].group;
             }else {
                 var tem = cc.instantiate(t.othersnake);
@@ -97,6 +101,7 @@ cc.Class({
         }, t.yaogan);
 
         t.player.getComponent('playersnake').direction = -180*cc.pToAngle(t.direction)/Math.PI+90;
+        t.testsnake.getComponent('testsnake').direction = t.direction;
 
         // // 加速按钮
         // cc.eventManager.addListener({
@@ -152,8 +157,15 @@ cc.Class({
 
         //控制眼的方向 
         t.player.getComponent('playersnake').directionAngle = -180*cc.pToAngle(t.direction)/Math.PI+90;
+        t.testsnake.getComponent('testsnake').directionAngle = -180*cc.pToAngle(t.direction)/Math.PI+90;
+        t.testsnake.getComponent('testsnake').direction = t.direction;
         // t.eye.rotation = -180*cc.pToAngle(t.direction)/Math.PI+90;  
 
+        // 控制主角蛇的走向，蛇头固定在canvas中心不动，通过移动背景，划出蛇身
+        // var oldPos = t.background.getPosition();
+        // var newPos = cc.pAdd(oldPos, cc.pMult(t.direction, -t.speed * dt)); 
+        // t.background.setPosition(newPos);
+        
         // 控制主角蛇的走向，蛇头固定在canvas中心不动，通过移动背景，划出蛇身
         var oldPos = t.background.getPosition();
         var newPos = cc.pAdd(oldPos, cc.pMult(t.direction, -t.speed * dt)); 

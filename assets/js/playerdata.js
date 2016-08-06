@@ -3,7 +3,7 @@ module.exports =
     name:'haha1',
     group:'player1',
     direction:{x:0.9,y:0.1},
-    position:{x:50,y:50},
+    position:{x:400,y:400},
     length:8,
     speed:80
 },{
