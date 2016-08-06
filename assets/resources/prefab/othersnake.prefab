@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "eye",
+    "_name": "othersnake",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -29,8 +29,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 50,
-      "height": 22
+      "width": 40,
+      "height": 36
     },
     "_children": [],
     "_rotationX": 0,
@@ -39,8 +39,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -223,
-      "y": 933
+      "x": -540,
+      "y": -586
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -54,10 +54,13 @@
     "_components": [
       {
         "__id__": 2
+      },
+      {
+        "__id__": 3
       }
     ],
     "_prefab": {
-      "__id__": 3
+      "__id__": 4
     },
     "groupIndex": 0
   },
@@ -68,12 +71,12 @@
     "node": {
       "__id__": 1
     },
-    "_enabled": true,
+    "_enabled": false,
     "_spriteFrame": {
-      "__uuid__": "0f3d6d8b-5401-4547-80fe-185e1206c183"
+      "__uuid__": "8cdb44ac-a3f6-449f-b354-7cd48cf84061"
     },
     "_type": 0,
-    "_sizeMode": 0,
+    "_sizeMode": 1,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -85,8 +88,33 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": {
+    "_atlas": null
+  },
+  {
+    "__type__": "40749MHkRdAf4zqxwFIWLzF",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "body": {
+      "__uuid__": "60f8f80b-0936-4cb6-8b89-6f24e5b1808d"
+    },
+    "eye": {
+      "__uuid__": "cff87d5c-4cee-461d-b7af-0fb6e383d8c1"
+    },
+    "color": null,
+    "background": null,
+    "headInitPos": null,
+    "direction": null,
+    "speed": 110,
+    "atlas": {
       "__uuid__": "a44d01f0-a800-4a80-a8b7-fa389402d41d"
+    },
+    "length": 8,
+    "explore": {
+      "__uuid__": "40b51ebd-4785-4f92-985a-9d058848f8c5"
     }
   },
   {
@@ -95,8 +123,8 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "cff87d5c-4cee-461d-b7af-0fb6e383d8c1"
+      "__uuid__": "224c274a-5871-4f21-8463-9c202a549005"
     },
-    "fileId": "96ade7XIYRCPJjR+Qh5E38M"
+    "fileId": "ba2038dZkNFUJZmI7MIoB3h"
   }
 ]

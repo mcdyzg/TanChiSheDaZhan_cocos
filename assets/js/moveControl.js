@@ -1,11 +1,10 @@
+window.__G__ = {};
+__G__.playerdata = require('playerdata');
+
 cc.Class({
     extends: cc.Component,
 
     properties: {
-        head:{
-            default:null,
-            type:cc.Node
-        },
         background:{
             default:null,
             type:cc.Node
@@ -14,7 +13,7 @@ cc.Class({
             default:null,
             type:cc.Node
         },
-        speed: 200,
+        speed: 110,
         yaoganInitPosition:{
             default:null
         },
@@ -31,31 +30,47 @@ cc.Class({
             default:null,
             type:cc.Node
         },
-        eye:{
+        othersnake:{
+            default:null,
+            type: cc.Prefab
+        },
+        player:{
             default:null,
             type:cc.Node
         },
-        body: {
-            default: null,
-            type: cc.Prefab
-        },
-        snakeInitPos:{
-            default:null
-        },
-        snakeLen:6,
-        othersnake:{
+        othersnakecontainer:{
             default:null,
-            type: cc.Node
+            type:cc.Node
         }
     },
 
     // use this for initialization
     onLoad: function () {
         var t = this;
-        // 初始化蛇身位置
-        var headInitPos = t.node.convertToWorldSpaceAR(t.head.getPosition());
-        var headInitPosInWrap = t.background.convertToNodeSpaceAR(headInitPos);
-        t.snakeInitPos = headInitPosInWrap;
+        cc.director.getCollisionManager().enabled = true;
+        // cc.director.getCollisionManager().enabledDebugDraw = true;
+        // var manager = cc.director.getCollisionManager();
+        // manager.enabledDrawBoundingBox = true;
+
+        // 生成玩家的小蛇
+        t.otherplayer = [];
+        for(var i = 0;i<__G__.playerdata.length;i++){
+            if(i==0) {
+                t.background.position = __G__.playerdata[i].position;
+                t.player.getComponent('playersnake').speed = __G__.playerdata[i].speed;
+                t.player.getComponent('playersnake').direction=__G__.playerdata[i].direction;
+                t.player.group = __G__.playerdata[i].group;
+            }else {
+                var tem = cc.instantiate(t.othersnake);
+                t.othersnakecontainer.addChild(tem);
+                tem.position = __G__.playerdata[i].position;
+                tem.getComponent('othersnake').speed = __G__.playerdata[i].speed;
+                tem.getComponent('othersnake').direction=__G__.playerdata[i].direction;
+                // tem.getComponent('othersnake').group = __G__.playerdata[i].group;
+                tem.group = __G__.playerdata[i].group;
+                t.otherplayer.push(tem);
+            }
+        }
 
         // 设置摇杆方向 
         t.yaoganInitPosition = {x:0,y:0};
@@ -81,7 +96,7 @@ cc.Class({
             }
         }, t.yaogan);
 
-        t.addSnakeBody(headInitPosInWrap);
+        t.player.getComponent('playersnake').direction = -180*cc.pToAngle(t.direction)/Math.PI+90;
 
         // // 加速按钮
         // cc.eventManager.addListener({
@@ -117,6 +132,14 @@ cc.Class({
 
     update: function (dt) {
         var t = this;
+
+        // // 更新其他玩家小蛇参数
+        // for(var i = 0;i<__G__.playerdata.length;i++){
+        //     t.otherplayer[i].position = __G__.playerdata[i].position;
+        //     t.otherplayer[i].getComponent('othersnake').speed = __G__.playerdata[i].speed;
+        //     t.otherplayer[i].getComponent('othersnake').direction=__G__.playerdata[i].direction;
+        // }
+
         // 控制遥杆方向
         var yanganOldPos = t.yaogan.children[0].getPosition();
         t.direction = cc.pNormalize(cc.pSub(t.yaoganMoveToPosition, t.yaoganInitPosition));
@@ -127,43 +150,20 @@ cc.Class({
             t.yaogan.children[0].setPosition({x:0,y:0});
         }
 
-        // //控制眼的方向 
+        //控制眼的方向 
+        t.player.getComponent('playersnake').directionAngle = -180*cc.pToAngle(t.direction)/Math.PI+90;
         // t.eye.rotation = -180*cc.pToAngle(t.direction)/Math.PI+90;  
 
-        // // 判断头与身子的距离，增加蛇身
-        // var headPos = t.node.convertToWorldSpaceAR(t.head.getPosition());
-        // var headPosInWrap = t.background.convertToNodeSpaceAR(headPos);
-        // if(cc.pDistance(t.snakeInitPos,headPosInWrap) >= 15 && cc.pDistance(t.snakeInitPos,headPosInWrap) <=100){
-        //     t.snakeInitPos = headPosInWrap;
-        //     t.addSnakeBody(headPosInWrap);
-        // }
-
-        // // 控制小蛇走向
-        // var oldPos = t.background.getPosition();
-        // var newPos = cc.pAdd(oldPos, cc.pMult(t.direction, -t.speed * dt)); 
-        // t.background.setPosition(newPos);
-        
-        // //减少身子
-        // if(t.background.children.length > t.snakeLen) {
-        //     t.reduceSnakeBody()
-        // }
-
+        // 控制主角蛇的走向，蛇头固定在canvas中心不动，通过移动背景，划出蛇身
+        var oldPos = t.background.getPosition();
+        var newPos = cc.pAdd(oldPos, cc.pMult(t.direction, -t.speed * dt)); 
+        t.background.setPosition(newPos);
     },
-
-    addSnakeBody:function(pos){
-        //添加蛇身子
-        var t = this;
-        var body = cc.instantiate(t.body);
-        // body.scale = 2;
-        t.background.addChild(body);
-        // t.snakeInitPos = cc.pAdd(t.snakeInitPos, cc.pMult(t.direction, 40));  
-        body.position = pos;
-        // body.group= 'default';
-        // console.log(body.group)
-    },
-
-    reduceSnakeBody:function(){
-        var t = this;
-        t.background.children[1].destroy();
-    }
 });
+
+
+
+
+// head  5
+// body  6
+// eye   

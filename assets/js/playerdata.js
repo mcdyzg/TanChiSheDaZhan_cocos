@@ -1,0 +1,72 @@
+module.exports = 
+[{
+    name:'haha1',
+    group:'player1',
+    direction:{x:0.9,y:0.1},
+    position:{x:50,y:50},
+    length:8,
+    speed:80
+},{
+    name:'haha2',
+    group:'player2',
+    direction:{x:0.9,y:0.1},
+    position:{x:-600,y:-600},
+    length:8,
+    speed:80
+},{
+    name:'haha3',
+    group:'player3',
+    direction:{x:0.9,y:0.1},
+    position:{x:-600,y:-600},
+    length:8,
+    speed:80
+},{
+    name:'haha4',
+    group:'player4',
+    direction:{x:0.9,y:0.1},
+    position:{x:-600,y:-600},
+    length:8,
+    speed:80
+},{
+    name:'haha5',
+    group:'player5',
+    direction:{x:0.9,y:0.1},
+    position:{x:-600,y:-600},
+    length:8,
+    speed:80
+},{
+    name:'haha6',
+    group:'player6',
+    direction:{x:0.9,y:0.1},
+    position:{x:-600,y:-600},
+    length:8,
+    speed:80
+},{
+    name:'haha6',
+    group:'player6',
+    direction:{x:0.9,y:0.1},
+    position:{x:-600,y:-600},
+    length:8,
+    speed:80
+},{
+    name:'haha8',
+    group:'player8',
+    direction:{x:0.9,y:0.1},
+    position:{x:-600,y:-600},
+    length:8,
+    speed:80
+},{
+    name:'haha9',
+    group:'player9',
+    direction:{x:0.9,y:0.1},
+    position:{x:-600,y:-600},
+    length:8,
+    speed:80
+},{
+    name:'haha10',
+    group:'player10',
+    direction:{x:0.9,y:0.1},
+    position:{x:-600,y:-600},
+    length:8,
+    speed:80
+}];

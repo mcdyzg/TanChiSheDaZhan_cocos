@@ -10,7 +10,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "anhuang",
+    "_name": "bull",
     "_objFlags": 0,
     "_opacity": 255,
     "_color": {
@@ -29,8 +29,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 25,
-      "height": 25
+      "width": 16,
+      "height": 16
     },
     "_children": [],
     "_rotationX": 0,
@@ -39,8 +39,8 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -271,
-      "y": 274
+      "x": -250,
+      "y": 224
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -62,7 +62,7 @@
     "_prefab": {
       "__id__": 4
     },
-    "groupIndex": 1
+    "groupIndex": 0
   },
   {
     "__type__": "cc.Sprite",
@@ -73,7 +73,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "bffb3250-9d6b-4b26-a0cd-3678f3802385"
+      "__uuid__": "8cdb44ac-a3f6-449f-b354-7cd48cf84061"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -88,9 +88,7 @@
     "_isTrimmedMode": true,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": {
-      "__uuid__": "a44d01f0-a800-4a80-a8b7-fa389402d41d"
-    }
+    "_atlas": null
   },
   {
     "__type__": "cc.CircleCollider",
@@ -106,16 +104,14 @@
       "x": 0,
       "y": 0
     },
-    "_radius": 12.5
+    "_radius": 8
   },
   {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
     },
-    "asset": {
-      "__uuid__": "92f9a67a-c3f8-407a-a470-6550facc219c"
-    },
-    "fileId": "710cczTDmxFWZsNsi+LabEL"
+    "asset": null,
+    "fileId": "7ce26D9i1NEFZg7Qj6YdrrS"
   }
 ]
