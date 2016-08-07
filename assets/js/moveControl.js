@@ -56,25 +56,25 @@ cc.Class({
         // var manager = cc.director.getCollisionManager();
         // manager.enabledDrawBoundingBox = true;
 
-        // 生成玩家的小蛇
-        t.otherplayer = [];
-        for(var i = 0;i<__G__.playerdata.length;i++){
-            if(i==0) {
-                // t.background.position = __G__.playerdata[i].position;
-                t.player.getComponent('playersnake').speed = __G__.playerdata[i].speed;
-                t.player.getComponent('playersnake').direction=__G__.playerdata[i].direction; 
-                t.player.group = __G__.playerdata[i].group;
-            }else {
-                var tem = cc.instantiate(t.othersnake);
-                t.othersnakecontainer.addChild(tem);
-                tem.position = __G__.playerdata[i].position;
-                tem.getComponent('othersnake').speed = __G__.playerdata[i].speed;
-                tem.getComponent('othersnake').direction=__G__.playerdata[i].direction;
-                // tem.getComponent('othersnake').group = __G__.playerdata[i].group;
-                tem.group = __G__.playerdata[i].group;
-                t.otherplayer.push(tem);
-            }
-        }
+        // // 生成玩家的小蛇
+        // t.otherplayer = [];
+        // for(var i = 0;i<__G__.playerdata.length;i++){
+        //     if(i==0) {
+        //         // t.background.position = __G__.playerdata[i].position;
+        //         t.player.getComponent('playersnake').speed = __G__.playerdata[i].speed;
+        //         t.player.getComponent('playersnake').direction=__G__.playerdata[i].direction; 
+        //         t.player.group = __G__.playerdata[i].group;
+        //     }else {
+        //         var tem = cc.instantiate(t.othersnake);
+        //         t.othersnakecontainer.addChild(tem);
+        //         tem.position = __G__.playerdata[i].position;
+        //         tem.getComponent('othersnake').speed = __G__.playerdata[i].speed;
+        //         tem.getComponent('othersnake').direction=__G__.playerdata[i].direction;
+        //         // tem.getComponent('othersnake').group = __G__.playerdata[i].group;
+        //         tem.group = __G__.playerdata[i].group;
+        //         t.otherplayer.push(tem);
+        //     }
+        // }
 
         // 设置摇杆方向 
         t.yaoganInitPosition = {x:0,y:0};
@@ -133,6 +133,8 @@ cc.Class({
         // var background = cc.p(this.background)
         // this.snakeLen = this.snakeLen+1;
         // console.log(this.snakeLen);
+        // var t = this;
+        // t.testsnake.getComponent('testsnake').length++;
     },
 
     update: function (dt) {
@@ -168,7 +170,7 @@ cc.Class({
         
         // 控制主角蛇的走向，蛇头固定在canvas中心不动，通过移动背景，划出蛇身
         var oldPos = t.background.getPosition();
-        var newPos = cc.pAdd(oldPos, cc.pMult(t.direction, -t.speed * dt)); 
+        var newPos = cc.pAdd(oldPos, cc.pMult(t.direction, -t.speed * 0.016)); 
         t.background.setPosition(newPos);
     },
 });

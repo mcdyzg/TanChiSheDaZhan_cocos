@@ -85,15 +85,6 @@ cc.Class({
         eye.zIndex = 999999;
         eye.rotation = t.directionAngle ? t.directionAngle: 0; 
 
-        // //创建第一个蛇身子
-        // var body = cc.instantiate(t.body);
-        // body.tag = '6'
-        // t.body = body;
-        // var sprite = body.getComponent(cc.Sprite);
-        // sprite.spriteFrame = t.atlas.getSpriteFrame(t.color);
-        // body.parent = t.node;
-        // body.position = {x:-656,y:-705};
-
         // 创建蛇身
         for(var i = 0;i<t.length;i++) {
             var body = cc.instantiate(t.body);
@@ -114,7 +105,7 @@ cc.Class({
 
         // 蛇头移动
         var oldPos = t.head.getPosition();
-        var newPos = cc.pAdd(oldPos, cc.pMult(t.direction, t.speed * dt)); 
+        var newPos = cc.pAdd(oldPos, cc.pMult(t.direction, t.speed * 0.016)); 
         t.head.setPosition(newPos);
         t.posArr.push(newPos);
 
@@ -126,22 +117,11 @@ cc.Class({
         //         var sprite = body.getComponent(cc.Sprite);
         //         sprite.spriteFrame = t.atlas.getSpriteFrame(t.color);
         //         body.parent = t.node;
-        //         body.position = {x:-656,y:-705};
-        //         t.bodyPosArr.push([body.position]);
+        //         body.position = t.posArr[t.bodyArr.length-1];
         //         t.bodyArr.push(body);
         //     }
         // }
 
-        // 蛇身移动
-        // for(var r = 0;r<t.bodyArr.length;r++){
-        //     if(t.headPosArr.length >= 20) {
-        //         t.body.setPosition(t.headPosArr[0]);
-        //         t.headPosArr.splice(0,1);
-        //     }
-        //     if(t.bodyPosArr[r].length >=20) {
-        //         t.bodyArr[r].setPosition()
-        //     }
-        // }
         if(t.posArr.length > 20*t.length) {
             t.posArr.splice(0,1);
         }
